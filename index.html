@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+    <title>Steam Booster - Home</title>
+</head>
+<body>
+    <div class="nav" id="nav">
+        <div class="logo">
+            {{ logo }}
+        </div>
+        <ul>
+            <li v-for="link in links">
+                <a :href="link.href">{{ link.text }}</a>
+            </li>
+            <li>
+                <a :href="contacthref" class="contact">{{ contacttext }}</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="hero" id="hero">
+        <div class="wrapper">
+            <p class="title">{{ title }}</p>
+            <p class="subtitle"><span v-html="subtitle"></span></p>
+            <div class="buttons">
+                <button class="btn primary">
+                    {{ leftButton }}
+                </div>
+                <button class="btn secondary">
+                    {{ rightButton }}
+                </div>
+            </div>
+        </div>
+        <div class="scroll" id="scroll">
+            <img src="style/svg/scroll.svg" alt="">
+        </div>
+        <div class="overlay-gradient">
+        </div>
+        <div class="overlay">
+        </div>
+    </div>
+
+    <div class="featureset" id="featureset">
+        <p class="title">{{ title }}</p>
+        <div class="features">
+            <div class="feature" v-for="feature in features">
+                <div class="icon">
+                    <img v-bind:src="feature.iconLocation">
+                </div>
+                <div class="text">
+                    <p class="title">{{ feature.title }}</p>
+                    <p class="subtitle">{{ feature.subtitle }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pricing" id="pricing">
+        <div class="wrapper">
+            <p class="title">{{ title }}</p>
+            <div class="billingplan">
+                <div onclick="toggleBilling(0)" v-bind:class="{ active: monthlyActive }" class="monthly">{{ monthlyText }}</div>
+                <div onclick="toggleBilling(1)" v-bind:class="{ active: yearlyActive }" class="yearly">{{ yearlyText }}</div>
+            </div>
+            <div class="plans">
+                <div class="plan" id="basic">
+                    <div class="title">
+                        <div class="icon">
+                            <img :src="basicIcon">
+                        </div>
+                        <div class="desc">
+                            <p class="titleText">{{ basicTitle }}</p>
+                            <p class="descText">{{ basicSubtitle }}</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li v-for="feature in basicFeatures">
+                            <div class="check">
+                                <img :src="checkIcon">
+                            </div>
+                            {{ feature.text }}
+                        </li>
+                    </ul>
+                    <div class="price">
+                        <p class="nr" >{{ basicPrice }}</p>
+                        <p v-if="monthlyActive" class="billing">/month</p>
+                        <p v-if="yearlyActive" class="billing">/year</p>
+                    </div>
+                    <div class="button">
+                        {{ basicButton }}
+                    </div>
+                </div>
+
+                <div class="plan" id="pro">
+                    <div class="title">
+                        <div class="icon">
+                            <img :src="basicIcon">
+                        </div>
+                        <div class="desc">
+                            <p class="titleText">{{ basicTitle }}</p>
+                            <p class="descText">{{ basicSubtitle }}</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li v-for="feature in proFeatures">
+                            <div class="check">
+                                <img :src="checkIcon">
+                            </div>
+                            {{ feature.text }}
+                        </li>
+                    </ul>
+                    <div class="price">
+                        <p class="nr" >{{ proPrice }}</p>
+                        <p v-if="monthlyActive" class="billing">/month</p>
+                        <p v-if="yearlyActive" class="billing">/year</p>
+                    </div>
+                    <div class="button pro">
+                        {{ proButton }}
+                    </div>
+                </div>
+
+                <div class="plan" id="elite">
+                    <div class="title">
+                        <div class="icon">
+                            <img :src="eliteIcon">
+                        </div>
+                        <div class="desc">
+                            <p class="titleText">{{ eliteTitle }}</p>
+                            <p class="descText">{{ eliteSubtitle }}</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li v-for="feature in eliteFeatures">
+                            <div class="check">
+                                <img :src="checkIcon">
+                            </div>
+                            {{ feature.text }}
+                        </li>
+                    </ul>
+                    <div class="price">
+                        <p class="nr" >{{ elitePrice }}</p>
+                        <p v-if="monthlyActive" class="billing">/month</p>
+                        <p v-if="yearlyActive" class="billing">/year</p>
+                    </div>
+                    <div class="button">
+                        {{ eliteButton }}
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!--<div class="plan" id="elite">
+                    <div class="title">
+                        <div class="icon">
+                            <img :src="eliteIcon">
+                        </div>
+                        <div class="desc">
+                            <p class="titleText">{{ eliteTitle }}</p>
+                            <p class="descText">{{ eliteSubtitle }}</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <li v-for="feature in eliteFeatures">
+                            <div class="check">
+                                <img :src="checkIcon">
+                            </div>
+                            {{ feature.text }}
+                        </li>
+                    </ul>
+                    <div class="price">
+                        <p class="nr" >{{ elitePrice }}</p>
+                        <p v-if="monthlyActive" class="billing">/month</p>
+                        <p v-if="yearlyActive" class="billing">/year</p>
+                    </div>
+                    <div class="button">
+                        {{ eliteButton }}
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+<script src="scripts/app.js"></script>
+</body>
+</html>
