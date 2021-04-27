@@ -28,7 +28,7 @@
             <p class="title">{{ title }}</p>
             <p class="subtitle"><span v-html="subtitle"></span></p>
             <div class="buttons">
-                <button class="btn primary">
+                <button class="btn primary" onclick="href('featureset')">
                     {{ leftButton }}
                 </div>
                 <button class="btn secondary">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll" id="scroll">
+        <div class="scroll" id="scroll" onclick="href('featureset')">
             <img src="style/svg/scroll.svg" alt="">
         </div>
         <div class="overlay-gradient">
@@ -68,6 +68,8 @@
                 <div onclick="toggleBilling(1)" v-bind:class="{ active: yearlyActive }" class="yearly">{{ yearlyText }}</div>
             </div>
             <div class="plans">
+
+                <!--Basic Plan-->
                 <div class="plan" id="basic">
                     <div class="title">
                         <div class="icon">
@@ -87,7 +89,8 @@
                         </li>
                     </ul>
                     <div class="price">
-                        <p class="nr" >{{ basicPrice }}</p>
+                        <p v-if="monthlyActive" class="nr" >{{ basicMonthlyPrice }}</p>
+                        <p v-if="yearlyActive" class="nr" >{{ basicYearlyPrice }}</p>
                         <p v-if="monthlyActive" class="billing">/month</p>
                         <p v-if="yearlyActive" class="billing">/year</p>
                     </div>
@@ -96,14 +99,15 @@
                     </div>
                 </div>
 
+                <!--Pro plan-->
                 <div class="plan" id="pro">
                     <div class="title">
                         <div class="icon">
-                            <img :src="basicIcon">
+                            <img :src="proIcon">
                         </div>
                         <div class="desc">
-                            <p class="titleText">{{ basicTitle }}</p>
-                            <p class="descText">{{ basicSubtitle }}</p>
+                            <p class="titleText">{{ proTitle }}</p>
+                            <p class="descText">{{ proSubtitle }}</p>
                         </div>
                     </div>
                     <ul>
@@ -115,7 +119,8 @@
                         </li>
                     </ul>
                     <div class="price">
-                        <p class="nr" >{{ proPrice }}</p>
+                        <p v-if="monthlyActive" class="nr" >{{ proMonthlyPrice }}</p>
+                        <p v-if="yearlyActive" class="nr" >{{ proYearlyPrice }}</p>
                         <p v-if="monthlyActive" class="billing">/month</p>
                         <p v-if="yearlyActive" class="billing">/year</p>
                     </div>
@@ -124,9 +129,10 @@
                     </div>
                 </div>
 
+                <!--Elite plan-->
                 <div class="plan" id="elite">
                     <div class="title">
-                        <div class="icon">
+                        <div class="icon elite">
                             <img :src="eliteIcon">
                         </div>
                         <div class="desc">
@@ -143,7 +149,8 @@
                         </li>
                     </ul>
                     <div class="price">
-                        <p class="nr" >{{ elitePrice }}</p>
+                        <p v-if="monthlyActive" class="nr" >{{ eliteMonthlyPrice }}</p>
+                        <p v-if="yearlyActive" class="nr" >{{ eliteYearlyPrice }}</p>
                         <p v-if="monthlyActive" class="billing">/month</p>
                         <p v-if="yearlyActive" class="billing">/year</p>
                     </div>
@@ -152,8 +159,6 @@
                     </div>
                 </div>
             </div>
-
-            
 
             <!--<div class="plan" id="elite">
                     <div class="title">

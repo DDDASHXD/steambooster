@@ -33,7 +33,10 @@ body {
 }
 
 .nav {
-  background: #464646;
+  -webkit-box-shadow: 0px -1px 26px -2px rgba(0, 0, 0, 0.95);
+          box-shadow: 0px -1px 26px -2px rgba(0, 0, 0, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   position: fixed;
   color: white;
   display: -webkit-box;
@@ -148,12 +151,13 @@ body {
   position: absolute;
   bottom: 30px;
   left: 50%;
-  z-index: 100;
+  z-index: 1000;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   pointer-events: none;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .scroll img {
@@ -352,6 +356,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-shadow: -1px -1px 26px -2px rgba(0, 0, 0, 0.59);
+          box-shadow: -1px -1px 26px -2px rgba(0, 0, 0, 0.59);
 }
 
 .pricing .wrapper .plans .plan .title {
@@ -389,6 +395,11 @@ body {
   width: 50px;
 }
 
+.pricing .wrapper .plans .plan .title .icon.elite img {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
 .pricing .wrapper .plans .plan .title .desc {
   font-size: 1.3rem;
   font-weight: 400;
@@ -401,7 +412,8 @@ body {
 }
 
 .pricing .wrapper .plans .plan ul {
-  width: 100%;
+  width: 80%;
+  margin-bottom: 20px;
 }
 
 .pricing .wrapper .plans .plan ul li {
@@ -480,11 +492,13 @@ body {
   border-bottom-left-radius: 16px;
   border: 3px solid #3577D9;
   border-right: none;
+  z-index: 1;
 }
 
 .pricing .wrapper .plans #pro {
   border-radius: 16px;
   background: #3577D9;
+  z-index: 2;
 }
 
 .pricing .wrapper .plans #elite {
@@ -492,5 +506,6 @@ body {
   border-bottom-right-radius: 16px;
   border: 3px solid #3577D9;
   border-left: none;
+  z-index: 1;
 }
 /*# sourceMappingURL=style.css.map */

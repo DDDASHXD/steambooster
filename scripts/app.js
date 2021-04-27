@@ -59,7 +59,8 @@ var pricing = new Vue({
             { text: 'Lorem ipsum dolor sit amet' },
             { text: 'Lorem ipsum dolor sit amet' },
         ],
-        basicPrice: '$9.99',
+        basicMonthlyPrice: '$9.99',
+        basicYearlyPrice: '$99.99',
         basicButton: 'Choose Basic plan',
 
         //Pro plan
@@ -73,11 +74,10 @@ var pricing = new Vue({
             { text: 'Lorem ipsum dolor sit amet' },
             { text: 'Lorem ipsum dolor sit amet' },
             { text: 'Lorem ipsum dolor sit amet' },
-            { text: 'Lorem ipsum dolor sit amet' },
-            { text: 'Lorem ipsum dolor sit amet' },
-            { text: 'Lorem ipsum dolor sit amet' },
+            { text: 'Lorem ipsum dolor sit amet' }, 
         ],
-        proPrice: '$19.99',
+        proMonthlyPrice: '$19.99',
+        proYearlyPrice: '$199.99',
         proButton: 'Choose Pro plan',
 
         //elite plan
@@ -90,7 +90,9 @@ var pricing = new Vue({
             { text: 'Lorem ipsum dolor sit amet' },
             { text: 'Lorem ipsum dolor sit amet' },
         ],
-        elitePrice: '$24.99',
+        //24.99
+        eliteMonthlyPrice: '$24.99',
+        eliteYearlyPrice: '$249.99',
         eliteButton: 'Choose Elite plan',
     }
 })
@@ -122,4 +124,10 @@ function toggleBilling(nr) {
         pricing.monthlyActive = false;
         pricing.yearlyActive = true;
     }
+}
+
+function href(str) {
+    document.getElementById(str).scrollIntoView({
+        behavior: "smooth"
+    });
 }
